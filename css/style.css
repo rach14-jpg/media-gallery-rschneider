@@ -14,10 +14,10 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    background: #f9f9f9;
-    color: #333;
-    line-height: 1.6
+    font-family: var(--font-body);
+    background: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
 }
 
 .navbar {
@@ -26,28 +26,35 @@ body {
     align-items: center;
     padding: 1rem 2rem;
     background: #fff;
-    box-shadow:0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
     z-index: 10;
 }
 
+.logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
 .nav-links a {
     margin-left: 1rem;
     text-decoration: none;
-    color: #333;
+    color: var(--text-dark);
     font-weight: 500;
 }
 
 .hamburger {
     display: none;
+    cursor: pointer;
+    color: var(--text-dark);
 }
 
 .hero {
-position: relative;
-width: 100%;
-height: 60vh;
-overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    overflow: hidden;
 }
 
 .hero img {
@@ -61,7 +68,16 @@ overflow: hidden;
     top: 30%;
     left: 5%;
     color: white;
-    text-shadow: 0.0 10px rgba (0,0,0,0.5);
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.hero-text h1 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
 }
 
 .hero-controls {
@@ -92,12 +108,14 @@ overflow: hidden;
     transition: 0.3s;
 }
 
-.dot:hover {
+.dot:hover,
+.dot.active {
     opacity: 1;
+    background: var(--main-color);
 }
-    
+
 .grid {
-    display:grid;
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
     padding: 2rem;
@@ -107,8 +125,8 @@ overflow: hidden;
     background: white;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba (0,0,0,0.1);
-    transition: transform 0.3s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
 }
 
 .card:hover {
@@ -122,26 +140,32 @@ overflow: hidden;
 }
 
 .card-text {
-    padding: 1rem
+    padding: 1rem;
 }
 
 .card-text h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-heading);
+    margin-bottom: 0.5rem;
+}
+
+.card-text p {
     margin-bottom: 0.5rem;
 }
 
 .card-text button {
     margin-top: 0.5rem;
     padding: 0.5rem 1rem;
-    background: #0077cc;
+    background: var(--main-color);
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
 }
 
 .card-text button:hover {
-    background: #005fa3;
+    background: var(--hover-color);
+    transform: translateY(-2px);
 }
 
 .footer {
@@ -150,4 +174,52 @@ overflow: hidden;
     background: #eee;
     font-size: 0.9rem;
     color: #666;
+}
+
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .hero-text {
+        top: 25%;
+        left: 4%;
+    }
+
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-text {
+        top: 20%;
+        left: 3%;
+    }
+
+    .hero-text h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
 }
